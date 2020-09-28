@@ -191,9 +191,13 @@ public class TruecallerSdkPlugin : FlutterPlugin, MethodCallHandler, EventChanne
     }
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
-        this.activity = binding.activity
-        binding.addActivityResultListener { _, resultCode, data ->
-            TruecallerSDK.getInstance().onActivityResultObtained(activity as FragmentActivity, resultCode, data)
+        try {
+            this.activity = binding.activity
+            binding.addActivityResultListener { _, resultCode, data ->
+                TruecallerSDK.getInstance().onActivityResultObtained(activity as FragmentActivity, resultCode, data)
+            }
+        }catch (e: java.lang.Exception){
+           println(e);
         }
     }
 
