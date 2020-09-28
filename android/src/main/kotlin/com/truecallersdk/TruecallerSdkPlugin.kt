@@ -197,7 +197,7 @@ public class TruecallerSdkPlugin : FlutterPlugin, MethodCallHandler, EventChanne
                 TruecallerSDK.getInstance().onActivityResultObtained(activity as FragmentActivity, resultCode, data)
             }
         }catch (e: java.lang.Exception){
-           println(e);
+            android.util.Log.d(TAG, "configureFlutterEngine: ${e}")
         }
     }
 
